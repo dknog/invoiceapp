@@ -18,6 +18,7 @@ load_dotenv(dotenv_path)
 app = Flask(__name__)
 app.config['WKHTMLTOPDF_BIN_PATH'] = os.getenv('WKHTMLTOPDF_BIN_PATH')
 app.config['PDF_DIR_PATH'] = os.path.join(APP_ROOT, 'static', 'pdf')
+app.config['SITE_URL'] = os.getenv('SITE_URL')
 wkhtmltopdf = Wkhtmltopdf(app)
 
 stripe_key = os.getenv('STRIPE_KEY')

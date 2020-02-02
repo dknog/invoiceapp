@@ -8,6 +8,7 @@ Create a .env file in the app root.
 #+BEGIN_EXAMPLE
 STRIPE_KEY=YOUR_STRIPE_API_KEY
 WKHTMLTOPDF_BIN_PATH=/path/to/bin/wkhtmltopdf
+SITE_URL=https://invoice.dknog.dk
 #+END_EXAMPLE
 
 * Disclaimer
