@@ -1,0 +1,15 @@
+#+TITLE: Generate receipts based on Stripe payments
+
+* Introduction
+This webapp creates usable receipts for DKNOG events, and should only be used for this.
+
+* Config
+Create a .env file in the app root.
+#+BEGIN_EXAMPLE
+STRIPE_KEY=YOUR_STRIPE_API_KEY
+WKHTMLTOPDF_BIN_PATH=/path/to/bin/wkhtmltopdf
+#+END_EXAMPLE
+
+* Disclaimer
+
+This webapp is not meant to be used by anyone other than DKNOG as it is designed for a very specific purpose.
