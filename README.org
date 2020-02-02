@@ -13,3 +13,6 @@ WKHTMLTOPDF_BIN_PATH=/path/to/bin/wkhtmltopdf
 * Disclaimer
 
 This webapp is not meant to be used by anyone other than DKNOG as it is designed for a very specific purpose.
+
+* Deployment
+There is a generic =wsgi.py= file, and gunicorn is part of the requirements.
