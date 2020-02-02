@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<style>
+ .container {
+     max-width: 960px;
+ }
+</style>
+ {% endblock %}
+
+{% block title %}
+Request DKNOG receipt
+{% endblock %}
+
+{% block content %}
+<div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='img/dknoglogo-smaller.png') }} " alt="dknog">
+    <h2>Receipt</h2>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <p>
+            {{ receipt.charge.billing_details.name }}<br>
+            {{ receipt.charge.billing_details.email }} <br>
+            {{ receipt.country }}
+        </p>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <tr>
+                <th>Description</th><th>Qty</th><th>Unit Price</th><th>Tax</th><th>Amount</th>
+            </tr>
+            <tr>
+                <td>Conference Fee</td><td>1</td><td>{{ receipt.amount }} {{ receipt.currency }}</td><td>25% VAT incl.</td><td>{{ receipt.amount }}</td>
+            </tr>
+            <tr>
+                <td></td><td></td><td>Subtotal</td><td></td><td>{{ receipt.amount }}</td>
+            </tr>
+            <tr>
+                <td></td><td></td><td>VAT amount</td><td></td><td> {{ receipt.amount * 0.20 }}</td>
+            </tr>
+            <tr>
+                <td></td><td></td><td>Total paid</td><td></td><td> {{ receipt.amount }}</td>
+            </tr>
+        </table>
+        {% if pdf == False %}
+            <a href="{{ url_for('pdfreceipt', email=receipt.email, receipt_number=receipt.receipt_number) }}">PDF</a>
+            {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+
+    <p class="lead">
+        If you should have any questions, please don't hesitate to reach out to us.
+    </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto mr-auto">
+        <p>
+            Danish Network Operator's Group, DKNOG<br>
+            CVR/VAT no. 40019790<br>
+            <a href="mailto:dknog@dknog.dk">dknog@dknog.dk</a>
+        </p>
+    </div>
+</div>
+
+
+
+{% endblock %}

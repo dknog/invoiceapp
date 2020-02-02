@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<style>
+ .container {
+     max-width: 960px;
+ }
+</style>
+ {% endblock %}
+
+{% block title %}
+Request DKNOG receipt
+{% endblock %}
+
+{% block content %}
+<div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='img/dknoglogo-smaller.png') }} " alt="dknog">
+    <h2>Request receipt</h2>
+    <p class="lead">
+        DKNOG is aware that the receipts sent by our payment provider (Stripe) do not contain adequate information.
+        Enter your email address, and the receipt number you received by Stripe below.
+    </p>
+</div>
+<form action="/receipt" method="POST">
+    <div class="row">
+        <div class="col">
+            <label for="emailAddress">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="col">
+            <label for="receiptID">Receipt # from email</label>
+            <input type="text" class="form-control" name="receiptid" required>
+            <small class="form-text text-muted">Receipt# in the form at of 1234-5678</small>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}

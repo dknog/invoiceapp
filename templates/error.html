@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<style>
+ .container {
+     max-width: 960px;
+ }
+</style>
+ {% endblock %}
+
+{% block title %}
+Request DKNOG receipt
+{% endblock %}
+
+{% block content %}
+<div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='img/dknoglogo-smaller.png') }} " alt="dknog">
+    <h2>Error</h2>
+</div>
+<div class="row">
+    <div class="col-auto">
+        <p>
+            We could locate your payment. Please check the email and the receipt number, or send us an email on <a href="mailto:dknog@dknog.dk">dknog@dknog.dk</a> for help.
+        </p>
+        <p><a href="{{ url_for('index') }}">Back</a><p>
+    </div>
+</div>
+
+
+{% endblock %}
