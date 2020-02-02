@@ -29,6 +29,11 @@ Request DKNOG receipt
 
 
 
+<div class="row">
+    <div class="col">
+        <p><strong>Date: </strong>{{ receipt.timestamp }}</p>
+    </div>
+</div>
 
 <div class="row">
     <div class="col">
@@ -49,11 +54,16 @@ Request DKNOG receipt
                 <td></td><td></td><td>Total paid</td><td></td><td> {{ receipt.amount }}</td>
             </tr>
         </table>
-        {% if pdf == False %}
-            <a href="{{ url_for('pdfreceipt', email=receipt.email, receipt_number=receipt.receipt_number) }}">PDF</a>
-            {% endif %}
     </div>
 </div>
+        {% if pdf == False %}
+<div class="row">
+    <div class="col">
+
+            <a href="{{ url_for('pdfreceipt', email=receipt.email, receipt_number=receipt.receipt_number) }}">PDF</a>
+    </div>
+</div>
+            {% endif %}
 <div class="row">
     <div class="col">
 
