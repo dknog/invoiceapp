@@ -22,10 +22,8 @@ class StripeInvoice(object):
     def find_customer(self, email):
         return stripe.Customer.list(email=email)
 
-
     def lookup_customer(self, id):
         return stripe.Customer.retrieve(id)
-
 
     def find_payments(self, customer_id):
         return stripe.Charge.list(customer=customer_id)
@@ -72,10 +70,3 @@ class StripeInvoice(object):
             raise ChargeNotFoundException('No charge could be found')
 
         return receipt
-
-#            print('Invoice')
-#            print(f'Amount: {receipt["amount"]} {receipt["currency"]}')
-#            print(f'Date of purchase: {receipt["timestamp"]}')
-
-
-    #generate_receipt('eising@dknog.dk', '1681-6042')
