@@ -56,7 +56,9 @@ class StripeInvoice(object):
                     )
                     receipt["amount"] = charge["amount"] / 100
                     receipt["currency"] = charge["currency"]
-                    receipt["timestamp"] = datetime.fromtimestamp(charge["created"])
+                    receipt["timestamp"] = datetime.fromtimestamp(
+                        charge["created"]
+                    )
                     receipt["charge"] = charge
                     receipt["country"] = country.name
                     receipt["email"] = email

@@ -1,6 +1,10 @@
 import os
 from flask import Flask, render_template, request, abort
-from payments import StripeInvoice, CustomerNotFoundException, ChargeNotFoundException
+from payments import (
+    StripeInvoice,
+    CustomerNotFoundException,
+    ChargeNotFoundException,
+)
 from dotenv import load_dotenv
 from flask_wkhtmltopdf import Wkhtmltopdf
 
