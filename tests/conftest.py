@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 from .utils import fetch_invoice, generate_card, generate_random_email
 
-from invoiceapp.app import app
+from invoiceapp.app import create_app
 
 
 def generate_payment_method(email):
@@ -92,5 +92,11 @@ def customer_email(customer):
 
 
 @pytest.fixture
-def client():
+def app():
+    """Get the flask app."""
+    return create_app()
+
+
+@pytest.fixture
+def client(app):
     return app.test_client()

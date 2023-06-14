@@ -27,7 +27,11 @@ def test_invoice(api_key, customer_email, receipt_id):
 def test_request_receipt(client, customer_email, receipt_id):
     """Test whether a receipt can be requested."""
     response = client.post(
-        "/receipt", data={"email": customer_email, "receiptid": receipt_id}
+        "/receipt",
+        data={
+            "email": customer_email,
+            "receiptid": receipt_id,
+        },
     )
     assert response.status_code == 200
 
@@ -35,3 +39,26 @@ def test_request_receipt(client, customer_email, receipt_id):
         "<td></td><td></td><td>Subtotal</td><td></td><td>800.0</td>\n"
         in response.text
     )
+
+
+def test_pdf_generation(client, customer_email, receipt_id):
+    """Test whether a PDF file can be generated."""
+    response = client.get(f"/pdf/{customer_email}/{receipt_id}")
+
+    assert response.status_code == 200
+
+
+def test_address_override(client, customer_email, receipt_id):
+    """Test whether the address override works."""
+    response = client.post(
+        "/receipt",
+        data={
+            "email": customer_email,
+            "receiptid": receipt_id,
+            "recipientname": "Test Surnameson",
+            "recipientaddress": "Test Road 5\r\nTestville",
+            "recipientcountry": "Norway",
+        },
+    )
+
+    assert "Test Road 5<br>Testville" in response.text
