@@ -5,15 +5,17 @@ from iso3166 import countries
 
 
 class CustomerNotFoundException(Exception):
-    pass
+    """This is exception is thrown if we cannot find the customer."""
 
 
 class ChargeNotFoundException(Exception):
-    pass
+    """This exception is thrown if we cannot find the payment."""
 
 
 class StripeInvoice(object):
-    """Class to fetch invoice data from stripe, given receipt number and email address"""
+    """Class to fetch invoice data from stripe.
+
+    If given receipt number and email address."""
 
     def __init__(self, stripe_key):
         stripe.api_key = stripe_key
