@@ -1,22 +1,9 @@
-amqp==2.5.2
-billiard==3.6.2.0
-celery==5.2.2
-certifi==2022.12.7
-chardet==3.0.4
-Click==7.0
 Flask==2.3.2
 Flask-WkHTMLtoPDF==0.1.0
 gunicorn==20.0.4
-idna==2.8
 iso3166==1.0.1
-itsdangerous==1.1.0
-Jinja2==2.11.3
-kombu==4.6.7
-MarkupSafe==1.1.1
 python-dotenv==0.10.5
 pytz==2019.3
-requests==2.31.0
 stripe==2.42.0
-urllib3==1.26.5
-vine==1.3.0
-Werkzeug==2.2.3
+# Test requirements
+pytest==7.3.2
