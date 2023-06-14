@@ -54,7 +54,7 @@ class Wkhtmltopdf(object):
 
     You must add three variables to your Flask app's config::
 
-        WKHTMLTOPDF_BIN_PATH = r'C:\Program Files\wkhtmltopdf\bin'
+        WKHTMLTOPDF_BIN_PATH = r'C:/Program Files/wkhtmltopdf/bin'
         PDF_DIR_PATH =  os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'pdf')
 
 
@@ -110,7 +110,7 @@ class Wkhtmltopdf(object):
 
         #render appropriate template and write to a temp file
         rendered = render_template(template_name_or_list, **context).encode('utf-8')
-        with tempfile.NamedTemporaryFile(suffix='.html', dir=os.path.dirname(__file__), delete=False, mode='w') as temp_html:
+        with tempfile.NamedTemporaryFile(suffix='.html', dir=os.path.dirname(__file__), delete=False, mode='w+b') as temp_html:
             temp_html.write(rendered)
 
         #Checks to see if the pdf directory exists and generates a random pdf name
