@@ -1,2 +1,27 @@
 [tool.black]
 line-length = 79
+
+
+[tool.poetry]
+name = "invoiceapp"
+version = "1.0.0"
+description = "A webapp to create more correct invoices. For use with DKNOG signups and stripe payments."
+authors = ["Allan Eising <eising@dknog.dk>"]
+readme = "README.org"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+stripe = "^5.4.0"
+Flask = "^2.3.2"
+Flask-WkHTMLtoPDF = "^0.1.0"
+gunicorn = "^20.1.0"
+iso3166 = "^2.1.1"
+python-dotenv = "^1.0.0"
+pytz = "^2023.3"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

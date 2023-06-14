@@ -1,9 +1,0 @@
-Flask==2.3.2
-Flask-WkHTMLtoPDF==0.1.0
-gunicorn==20.0.4
-iso3166==1.0.1
-python-dotenv==0.10.5
-pytz==2019.3
-stripe==2.42.0
-# Test requirements
-pytest==7.3.2
