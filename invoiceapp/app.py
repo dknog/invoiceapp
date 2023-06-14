@@ -10,7 +10,7 @@ from flask_wkhtmltopdf import Wkhtmltopdf
 
 
 APP_ROOT = os.path.dirname(__file__)
-dotenv_path = os.path.join(APP_ROOT, ".env")
+dotenv_path = os.path.join(APP_ROOT, "../.env")
 load_dotenv(dotenv_path)
 
 app = Flask(__name__)
