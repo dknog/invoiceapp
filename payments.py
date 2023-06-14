@@ -13,11 +13,10 @@ class ChargeNotFoundException(Exception):
 
 
 class StripeInvoice(object):
-    """ Class to fetch invoice data from stripe, given receipt number and email address """
+    """Class to fetch invoice data from stripe, given receipt number and email address"""
 
     def __init__(self, stripe_key):
         stripe.api_key = stripe_key
-
 
     def find_customer(self, email):
         return stripe.Customer.list(email=email)
@@ -30,19 +29,19 @@ class StripeInvoice(object):
 
     def find_charge_by_receipt(self, charges, receipt_number):
         relevant_charge = None
-        for charge in charges['data']:
-            if charge['receipt_number'] == receipt_number:
+        for charge in charges["data"]:
+            if charge["receipt_number"] == receipt_number:
                 relevant_charge = charge
                 break
 
         return relevant_charge
 
     def generate_receipt(self, email, receipt_number):
-        """ Generate a receipt based on email address and the receipt number"""
+        """Generate a receipt based on email address and the receipt number"""
         customers = self.find_customer(email)
         customer_ids = []
-        for customer in customers['data']:
-            customer_ids.append(customer['id'])
+        for customer in customers["data"]:
+            customer_ids.append(customer["id"])
 
         charge = None
         receipt = {}
@@ -52,21 +51,23 @@ class StripeInvoice(object):
                 charges = self.find_payments(customer_id)
                 charge = self.find_charge_by_receipt(charges, receipt_number)
                 if charge is not None:
-                    country = countries.get(charge['billing_details']['address']['country'])
-                    receipt['amount'] = charge['amount'] / 100
-                    receipt['currency'] = charge['currency']
-                    receipt['timestamp'] = datetime.fromtimestamp(charge['created'])
-                    receipt['charge'] = charge
-                    receipt['country'] = country.name
-                    receipt['email'] = email
-                    receipt['receipt_number'] = receipt_number
+                    country = countries.get(
+                        charge["billing_details"]["address"]["country"]
+                    )
+                    receipt["amount"] = charge["amount"] / 100
+                    receipt["currency"] = charge["currency"]
+                    receipt["timestamp"] = datetime.fromtimestamp(charge["created"])
+                    receipt["charge"] = charge
+                    receipt["country"] = country.name
+                    receipt["email"] = email
+                    receipt["receipt_number"] = receipt_number
 
                     break
 
         else:
-            raise CustomerNotFoundException('Customer Not Found')
+            raise CustomerNotFoundException("Customer Not Found")
 
         if len(receipt) == 0:
-            raise ChargeNotFoundException('No charge could be found')
+            raise ChargeNotFoundException("No charge could be found")
 
         return receipt
