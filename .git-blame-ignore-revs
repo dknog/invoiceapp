@@ -1,2 +1,4 @@
 # Migrated code style to black.
 7c7cd44d345e55422f11e9eeabc0da82481258b8
+# Changed max line-length to 79
+8a86cc42e294c82505f2b4e3bc45e35526317ede
